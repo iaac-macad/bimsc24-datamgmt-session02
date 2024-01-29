@@ -7,7 +7,9 @@ to define variables, methods and imports of other Vue compoennts. -->
 import { ref } from "vue";
 
 // Define variables and constants
-var count = ref(0);
+let count = ref(0);
+let scriptName = ref("https://github.com/Albertohortag/bimsc24-datamgmt-s01/raw/Alberto/Session01/Gh_definition_Alberto.gh")
+let name = ref("Alberto")
 
 // Define functions
 function increment() {
@@ -21,7 +23,7 @@ with data, objects, functions etc. -->
   <div id="top-bar">
     <div id="title-container">
       <img class="logo-image" alt="Iaac logo" src="./assets/iaac-white.png" />
-      <h2>Digital Tools for Cloud-based Data Management</h2>
+      <h2>Digital Tools for Cloud-based Data Management - {{ name }}</h2>
     </div>
   </div>
 
