@@ -22,12 +22,12 @@ function increment() {
 let text = ref("");
 let inputText = ref("");
 
-function addText(){
-    if(added_Text.value === "No text added so far!"){
-        added_Text.value = "";
+function addName(){
+    if(AddName.value === "No text added so far!"){
+        AddName.value = "";
     }
-    added_Text.value = added_Text.value + input_Text.value
-    added_Text.value = added_Text.value + input_Text.value;
+    AddName.value = AddName.value + AddText.value
+    AddName.value = AddName.value + AddText.value;
 }
 
 // Add two input texts in the sidebar and a button with @click. One will collect a selector and the second one a color. Once youpress the button, it should change the color to that css selector.
@@ -36,6 +36,7 @@ var element_selection = ref("");
 function changeStyle() {
     var element = document.querySelector(element_selection.value);
     element.style.backgroundColor = color_selection.value;
+    
 }
 
 </script>
@@ -76,19 +77,15 @@ with data, objects, functions etc. -->
         <div id="sidebar" class="container"> Sidebar </div>
 
         <div>
-    <input type="text" ref="inputText" />
-    <button @click="addText">Add Text</button>
-    <p>Text: <span v-text="text"></span></p>
-  </div>
-
-  <div>
-    <input type="text" ref="inputText" />
-    <button @click="addText">Change Color</button>
-    <p>Text: <span v-text="text"></span></p>
+    <input type="text" v-model="newName" placeholder="Add Text"/>
+    <button id="saveButton" @click="addText">Add Text</button>
+   
+    <br><input v-model="color" type="text" placeholder="Add Color">
+    <button @click="updatecolor" class="container" >Apply Color</button>    
   </div>
 
 
-        <div id="main" class="container"> Text input </div>
+        <div id="main" class="container"> <p>{{ displayText }}</p> </div>
     </div>
 
 </body>
@@ -110,16 +107,19 @@ with data, objects, functions etc. -->
 </template>
 
 <!-- Style is for CSS styling -->
-<style>html{
+<style scoped>
     
-  background-color: rgb(59, 59, 59); 
-  color: white;
-}
+ 
 
 body{
-
-  margin:0;
+  
 }
+
+margin:0;
+
+
+background-color: rgb(59, 59, 59); 
+  color: white;
 
 div{
 
