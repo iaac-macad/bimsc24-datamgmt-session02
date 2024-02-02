@@ -11,6 +11,11 @@ import { ref } from "vue";
 let count = ref(0);
 let name = ref("Anna Del Monaco")
  
+const text = ref('Anna'); 
+const inputText = ref(''); 
+
+let newColor = ref('');
+let color = ref('');
 
 // Define functions
 function increment() {
@@ -22,24 +27,17 @@ function increment() {
 onMounted(() => {
   console.log(`The initial count is ${count.value}.`)
 })
-const text = ref('Anna'); 
-const inputText = ref(''); 
 
-let newColor = ref('');
-let color = ref('');
 }
 
 // Add an input text in the template and a button with @click. Once the button is clicked, it should call back a function that adds the text to a ref variable and display it
 // Color try definition
 
 function changeColor() {
-    const elements = document.querySelectorAll(selector.value);
-    elements.forEach(el => {
-        el.style.backgroundColor = color.value; 
-    });
-    const elements = document.getElementById(selector.value);
+
+    const elements = document.getElementById("top-bar");
     console.log(elements)
-    elements.style.backgroundColor=color.value 
+    elements.style.backgroundColor=newColor.value 
 }
 
 // Add two input texts in the sidebar and a button with @click. One will collect a selector and the second one a color. Once youpress the button, it should change the color to that css selector.
@@ -58,17 +56,6 @@ with data, objects, functions etc. -->
     </div>
   </div>
 
-
-  <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anna's website</title>
-    <link rel="stylesheet" href="style.css">
-    <component :is="'script'"> src="script.js" defer></component>
-    
-</head>
-<body>
    
     <div id="navbar" class="container">  
         <div id="title">Anna's bootcamp website website</div>
@@ -88,7 +75,7 @@ with data, objects, functions etc. -->
    <button id="Add Text" @click="addText">Add Text</button>
    <br><input type="text" v-model="inputText" placeholder="Add Text"/>
     
-   <button @click="pickColor">Apply new color</button>
+   <button @click="changeColor">Apply new color</button>
    <br><input type="text" id="textInput" v-model = "newColor" placeholder="color">
   
     
@@ -99,8 +86,6 @@ with data, objects, functions etc. -->
         <div id="main" class="container"> <p>{{ displayText }}</p> </div>
     </div>
 
-</body>
-</html>
 
   <div id="content">
 
