@@ -10,7 +10,7 @@ import { ref } from "vue";
 // Define variables and constants
 let count = ref(0);
 let name = ref("Anna Del Monaco")
-
+ 
 
 // Define functions
 function increment() {
@@ -18,27 +18,33 @@ function increment() {
   console.log(name)
 
 
+// lifecycle hooks
+onMounted(() => {
+  console.log(`The initial count is ${count.value}.`)
+})
+const text = ref('Anna'); 
+const inputText = ref(''); 
+
+let newColor = ref('');
+let color = ref('');
 }
 
 // Add an input text in the template and a button with @click. Once the button is clicked, it should call back a function that adds the text to a ref variable and display it
 // Color try definition
-let newColor = ref('');
 
-function pickColor() {
-  const doc = document.documentElement;
-//   doc.style.background = newColor.value;
-  const main = document.querySelector("#main");
-  main.style.background = newColor.value;
-  console.log(newColor.value);
+function changeColor() {
+    const elements = document.querySelectorAll(selector.value);
+    elements.forEach(el => {
+        el.style.backgroundColor = color.value; 
+    });
+    const elements = document.getElementById(selector.value);
+    console.log(elements)
+    elements.style.backgroundColor=color.value 
 }
 
 // Add two input texts in the sidebar and a button with @click. One will collect a selector and the second one a color. Once youpress the button, it should change the color to that css selector.
-let color = ref('#ffffff');
-let newcolor = ref("");
-function changecolor () {
- color.value = newcolor.value;
- 
-}
+
+
 
 </script>
 
