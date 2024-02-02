@@ -8,35 +8,36 @@ to define variables, methods and imports of other Vue compoennts. -->
 import { ref } from "vue";
 
 // Define variables and constants
-var count = ref(0);
-var name = ref("Anna Del Monaco")
+let count = ref(0);
+let name = ref("Anna Del Monaco")
+
 
 // Define functions
 function increment() {
   count.value++;
   console.log(name)
+
+
 }
 
 // Add an input text in the template and a button with @click. Once the button is clicked, it should call back a function that adds the text to a ref variable and display it
+// Color try definition
+let newColor = ref('');
 
-let text = ref("");
-let inputText = ref("");
-
-function addName(){
-    if(AddName.value === "No text added so far!"){
-        AddName.value = "";
-    }
-    AddName.value = AddName.value + AddText.value
-    AddName.value = AddName.value + AddText.value;
+function pickColor() {
+  const doc = document.documentElement;
+//   doc.style.background = newColor.value;
+  const main = document.querySelector("#main");
+  main.style.background = newColor.value;
+  console.log(newColor.value);
 }
 
 // Add two input texts in the sidebar and a button with @click. One will collect a selector and the second one a color. Once youpress the button, it should change the color to that css selector.
-var color_selection = ref("");
-var element_selection = ref("");
-function changeStyle() {
-    var element = document.querySelector(element_selection.value);
-    element.style.backgroundColor = color_selection.value;
-    
+let color = ref('#ffffff');
+let newcolor = ref("");
+function changecolor () {
+ color.value = newcolor.value;
+ 
 }
 
 </script>
@@ -77,11 +78,15 @@ with data, objects, functions etc. -->
         <div id="sidebar" class="container"> Sidebar </div>
 
         <div>
-    <input type="text" v-model="newName" placeholder="Add Text"/>
-    <button id="saveButton" @click="addText">Add Text</button>
+          
+   <button id="Add Text" @click="addText">Add Text</button>
+   <br><input type="text" v-model="inputText" placeholder="Add Text"/>
+    
+   <button @click="pickColor">Apply new color</button>
+   <br><input type="text" id="textInput" v-model = "newColor" placeholder="color">
+  
+    
    
-    <br><input v-model="color" type="text" placeholder="Add Color">
-    <button @click="updatecolor" class="container" >Apply Color</button>    
   </div>
 
 
